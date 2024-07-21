@@ -14,10 +14,27 @@ citySelector.addEventListener("click", function () {
   cities.map((city) => {
     const dropDownElements = document.createElement("p");
     dropDownElements.innerText = city;
+    dropDownElements.addEventListener("click", function () {
+      fetchWeatherData(city);
+    });
     document.querySelector(".dropdown-items").append(dropDownElements);
-    dropDownElements.style.marginTop = "10px";
   });
 });
+function fetchWeatherData(city) {
+  const apiKey = "d41fd69033bdcc5c42e4280421caf599";
+
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      displayWeatherData(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching weather data:", error);
+    });
+}
 function displayWeatherDetails() {
   const city = document.querySelector("#city").value;
   const cities = JSON.parse(localStorage.getItem("city")) || [];
@@ -45,6 +62,7 @@ function displayWeatherDetails() {
       console.log(error);
     });
 }
+
 function displayWeatherData(data) {
   document.querySelector("#city").value = "";
   const cityName = document.querySelector(".city-name");
