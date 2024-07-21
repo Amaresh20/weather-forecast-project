@@ -10,6 +10,13 @@ citySelector.addEventListener("click", function () {
   document.querySelector(".dropdown-items").style.display = "block";
   const cities = JSON.parse(localStorage.getItem("city")) || [];
   console.log("cities", cities);
+  document.querySelector(".dropdown-items").innerHTML = "";
+  cities.map((city) => {
+    const dropDownElements = document.createElement("p");
+    dropDownElements.innerText = city;
+    document.querySelector(".dropdown-items").append(dropDownElements);
+    dropDownElements.style.marginTop = "10px";
+  });
 });
 function displayWeatherDetails() {
   const city = document.querySelector("#city").value;
@@ -44,7 +51,7 @@ function displayWeatherData(data) {
   cityName.innerHTML = data.name;
   const date = new Date();
   // date.toLocaleDateString();
-  console.log("date", date);
+  //   console.log("date", date);
   const temp = document.querySelector(".temp");
   temp.innerHTML = "Temperature : " + Math.round(data.main.temp) + " °C";
   const wind = document.querySelector(".wind");
