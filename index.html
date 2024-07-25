@@ -14,23 +14,38 @@
     />
   </head>
   <body>
-    <h1>Weather App</h1>
+    <nav>Weather App</nav>
     <div class="container">
       <div class="container-left">
-        <label for="city">City Name:</label><br />
-        <input type="text" id="city" placeholder="Enter city name" /><br />
+        <div class="search-container">
+          <label for="city">City Name:</label><br />
+          <input type="search" id="city" placeholder="City name" />
+          <button id="search-btn">Search</button>
+        </div>
         <div class="dropdown-items"></div>
-        <button id="search-btn">Search</button>
-        <h3>Or</h3>
-        <button id="location-btn">Use Current Location</button>
+        <div class="separator"></div>
+        <div class="location">
+          <button id="location-btn">Use Current Location</button>
+        </div>
       </div>
       <div class="container-right">
-        <p class="city-name"></p>
-        <p class="temp"></p>
-        <p class="wind"></p>
-        <p class="humidity"></p>
-        <img class="weather-image" src="" alt="" />
-        <p class="weather"></p>
+        <div class="loader" id="loader"></div>
+        <div class="weather-details">
+          <div class="weather-left">
+            <p class="city-name"></p>
+            <p class="temp"></p>
+            <p class="wind"></p>
+            <p class="humidity"></p>
+          </div>
+          <div class="weather-right">
+            <img class="weather-image" src="" alt="" />
+            <p class="weather"></p>
+          </div>
+        </div>
+        <div class="forecast-details">
+          <h2>5-Days Forecast</h2>
+          <ul class="weather-cards"></ul>
+        </div>
       </div>
     </div>
   </body>
